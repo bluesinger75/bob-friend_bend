@@ -2,11 +2,10 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.0.6'
 	id 'io.spring.dependency-management' version '1.1.0'
-	//querydsl 추가
-	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+//	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10" // QueryDSL 플러그인 추가
 }
 
-group = 'study'
+group = 'bobfriend'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
@@ -22,10 +21,8 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
 	//querydsl 추가
-//	implementation 'com.querydsl:querydsl-jpa'
 	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
 	annotationProcessor "com.querydsl:querydsl-apt:5.0.0:jakarta"
 	annotationProcessor "jakarta.annotation:jakarta.annotation-api"
@@ -45,7 +42,7 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
-	compile 'com.google.apis:google-api-services-youtube:v3-rev20210915-1.32.1' // YouTube API
+	implementation 'com.google.apis:google-api-services-youtube:v3-rev20210915-1.32.1' // YouTube API
 }
 
 tasks.named('test') {
@@ -55,17 +52,21 @@ tasks.named('test') {
 //querydsl 추가 시작
 def querydslDir = "$buildDir/generated/querydsl"
 
-querydsl {
-	jpa = true
-	querydslSourcesDir = querydslDir
-}
-sourceSets {
-	main.java.srcDir querydslDir
-}
-configurations {
-	querydsl.extendsFrom compileClasspath
-}
-compileQuerydsl {
-	options.annotationProcessorPath = configurations.querydsl
+//querydsl {
+//	jpa = true
+//	querydslSourcesDir = querydslDir // 생성된 Q 클래스 파일들이 위치할 경로
+//}
+//sourceSets {
+//	main.java.srcDir querydslDir // Q 클래스 파일들을 컴파일에 포함시킴
+//}
+//configurations {
+//	querydsl.extendsFrom compileClasspath
+//}
+//compileQuerydsl {
+//	options.annotationProcessorPath = configurations.querydsl
+//}
+
+clean {
+	delete file(querydslDir)
 }
 //querydsl 추가 끝

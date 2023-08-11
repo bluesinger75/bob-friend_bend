@@ -1,6 +1,11 @@
 package com.bobfriend.bobfriend_bend.dto;
 
-public class VideosDto {
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Getter
+@NoArgsConstructor
+public class VideoDto {
     //필수 매개변수
     /**
      * part 매개변수는 API 응답이 포함하는 video 리소스 속성 하나 이상의 쉼표로 구분된 목록을 지정합니다.
@@ -64,4 +69,11 @@ public class VideosDto {
      * 이 매개변수는 chart 매개변수와만 함께 사용할 수 있습니다. 기본적으로 차트는 특정 카테고리로 제한되지 않습니다. 기본값은 0입니다.
      */
     private String videoCategoryId;
+    private String title;
+
+    public String setId() {
+        return this.getId();
+    }
+
+
 }
