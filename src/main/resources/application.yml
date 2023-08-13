@@ -28,8 +28,3 @@ logging:
     org.hibernate.SQL: debug #logger를 통해 하이버네이트 실행 SQL을 남긴다.
 #    org.hibernate.type: trace
 
-# YouTuBe 민감정보
-youtube:
-  api:
-    key: AIzaSyBoc3dkZDw4wIHd__iDGRlLU3PgMKPQoTQ
-    url: https://www.googleapis.com/youtube/v3/videos
