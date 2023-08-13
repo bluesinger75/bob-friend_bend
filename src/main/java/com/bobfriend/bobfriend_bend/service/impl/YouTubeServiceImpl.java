@@ -18,10 +18,11 @@ public class YouTubeServiceImpl implements YouTubeService {
 
     @Value("${youtube.api.url}")
     private String API_URL;
+
     @Override
     public List<ItemsDto> getPopularVideos(int maxResults) {
         RestTemplate restTemplate = new RestTemplate();
-        String url = API_URL + "?part=snippet&chart=mostPopular&maxResults=" + maxResults + "&key=" + API_KEY;
+        String url = API_URL + "?part=snippet&chart=mostPopular&regionCode=kr&maxResults=" + maxResults + "&key=" + API_KEY;
 
         ResponseEntity<YouTubeApiResponse> responseEntity = restTemplate.getForEntity(url, YouTubeApiResponse.class);
         YouTubeApiResponse apiResponse = responseEntity.getBody();
