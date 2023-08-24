@@ -6,10 +6,10 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class ThumbnailsDto {
-    //    private DefaultDto default;
-    //    private MediumDto medium;
-    //    private highDto high;
-    private StandardDto standard;
+//    private DefaultDto default;
+    private MediumDto medium;
+//    private highDto high;
+//    private StandardDto standard;
 //    private MaxresDto maxres;
 
 
